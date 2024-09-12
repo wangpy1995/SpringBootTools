@@ -1,0 +1,57 @@
+server:
+  port: 80
+  second-port: 9696
+  servlet:
+    session:
+      cookie:
+        max-age: 2592000
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  type-aliases-package: org.server.entity  # 注意：对应实体类的路径
+
+knife4j:
+  enable: true
+  openapi:
+    title: "接口文档"
+    version: 1.0
+    group:
+      default:
+        api-rule: package
+        api-rule-resources:
+          - com.example.controller
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html,.xhtml,.php
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+
+selfdefine:
+  logfile:
+    max-size: 5MB
+    rootPath: ./logs/
+
+mybatis:
+#  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+
